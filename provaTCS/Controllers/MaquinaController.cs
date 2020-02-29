@@ -24,13 +24,13 @@ namespace provaTCS.Controllers
         {
             return new MODEL.Maquina().GetAtivos();
         }
-        // GET: api/Maquina/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
-        }
 
+        // GET: api/Maquina/Nome
+        [HttpGet("{Nome}")]
+        public bool CheckNomeMaquinaExists(string Nome)
+        {
+            return new MODEL.Maquina().CheckNomeMaquinaExists(Nome);
+        }
         // POST: api/Maquina
         [HttpPost]
         public void Post(MODEL.Maquina dados)
@@ -38,12 +38,14 @@ namespace provaTCS.Controllers
             dados.Insert();
         }
 
-        // PUT: api/Maquina/5
+        // PUT: api/Maquina/
         [HttpPut]
         public void Put(MODEL.Maquina dados)
         {
             dados.Update();
         }
+
+
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]

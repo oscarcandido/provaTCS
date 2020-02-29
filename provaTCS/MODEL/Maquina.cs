@@ -46,5 +46,11 @@ namespace provaTCS.MODEL
                         Ativo = @Ativo
                         WHERE ID = @ID", this);
         }
+
+        public bool CheckNomeMaquinaExists(string Nome)
+        {
+            using IDbConnection DB = new MySqlConnection(Conn);
+            return DB.Query<bool>("SELECT EXISTS(SELECT ID FROM MAQUINA WHERE NOME = @Nome)", new { Nome }).SingleOrDefault();
+        }
     }
 }

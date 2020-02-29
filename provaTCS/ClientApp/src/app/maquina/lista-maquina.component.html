@@ -1,10 +1,73 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
-  it works
-</body>
-</html>
+<mat-card>
+  <mat-card-title><i class="fa fa-cog text-info" aria-hidden="true"></i> Máquinas </mat-card-title>
+  <mat-card-subtitle>Inclusão/Edição de Máquinas</mat-card-subtitle>
+  <mat-card-content>
+    <div class="row">
+      <div class="col-12">
+        <mat-form-field>
+          <mat-label>Filtro</mat-label>
+          <input matInput (keyup)="applyFilter($event)">
+        </mat-form-field>
+        <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 tabela">
+
+
+          <!-- Nome -->
+          <ng-container matColumnDef="nome">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="colNome"> Nome</th>
+            <td mat-cell *matCellDef="let maquina" class="colNome">
+              {{maquina.nome}}
+            </td>
+          </ng-container>
+
+          <!-- Ativo -->
+          <ng-container matColumnDef="ativo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header  class="colAtivo"> Ativo </th>
+            <td mat-cell *matCellDef="let maquina" class="colAtivo">
+              <span *ngIf="maquina.ativo" class="text-success" matTooltip="Ativa"><i class="fa fa-check fa-lg "></i></span>
+              <span *ngIf="!maquina.ativo" class="text-danger" matTooltip="Inativa"><i class="fa fa-times fa-lg "></i></span>
+
+            </td>
+          </ng-container>
+
+          <!--Editar-->
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="colEditar">Editar</th>
+            <td mat-cell *matCellDef="let maquina" class="colEditar">
+              <button (click)=visualizaMaquina(maquina)
+                      
+                      mat-icon-button=""
+                      matTooltip="Editar Máquina"
+                      class="mat-icon-button mat-button-base mat-primary ng-star-inserted text-info"
+                      aria-describedby="cdk-describedby-message-5"
+                      cdk-describedby-host=""
+                      style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+                <span class="mat-button-wrapper">
+                  <mat-icon class="mat-icon notranslate material-icons mat-icon-no-color" role="img" aria-hidden="true">
+                    <i class="fa fa-edit"></i>
+                  </mat-icon>
+                </span>
+                <div class="mat-button-ripple mat-ripple mat-button-ripple-round" matripple="">
+
+                </div><div class="mat-button-focus-overlay"></div>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[10, 20 , 50, 100]" showFirstLastButtons></mat-paginator>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <div class="row">
+      <div class="col-12">
+        <button mat-raised-button color="primary" (click)="novaMaquina()"><i class="fa fa-plus"></i> Nova</button>
+      </div>
+    </div>
+  </mat-card-actions>
+</mat-card>
+<div class="fixed-bottom">
+  <ocs-alert></ocs-alert>
+</div>

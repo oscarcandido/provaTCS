@@ -1,0 +1,29 @@
+<form #form="ngForm" [formGroup]="maquinaForm" (submit)="salvaMaquina()">
+  <div class="kt-portlet" mat-dialog-title>
+    <mat-card>
+      <mat-card-title><i class="fa fa-cog text-info" aria-hidden="true"></i> Cadastro/Edição de máquina </mat-card-title>
+    </mat-card>
+  </div>
+  <div mat-dialog-content>
+      <div class="row">
+        <mat-form-field appearance="fill" class="col-12">
+          <mat-label>Nome da Máquina</mat-label>
+          <input matInput formControlName="nome">
+          <mat-error *ngIf="this.maquinaForm.get('nome').errors?.required && form.submitted">Informe o nome da máquina</mat-error>
+          <mat-error *ngIf="this.maquinaForm.get('nome').errors?.minlength">O nome deve ter pelo menos 3 caracteres</mat-error>
+          <mat-error *ngIf="this.maquinaForm.get('nome').errors?.maxlength">O nome deve ter no máximo 100 caracteres</mat-error>
+          <mat-error *ngIf="this.maquinaForm.get('nome').errors?.nomeExists">Já existe máquina com este nome cadastrado</mat-error>
+        </mat-form-field>
+
+      </div>
+      <div class="row">
+        <div class="col-2">
+          <mat-checkbox formControlName="ativo">Ativo</mat-checkbox>
+        </div>
+      </div>
+  </div>
+  <div mat-dialog-actions align="end">
+    <button mat-raised-button type="submit" color="primary">Salvar</button>
+    <button mat-raised-button [mat-dialog-close] cdkFocusInitial>Cancelar</button>
+  </div>
+</form>

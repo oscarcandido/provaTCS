@@ -41,18 +41,26 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\app.routing.module.ts" />
+    <None Remove="ClientApp\src\app\maquina\edit-maquina.component.ts" />
     <None Remove="ClientApp\src\app\maquina\lista-maquina.component.ts" />
     <None Remove="ClientApp\src\app\maquina\maquina.module.ts" />
     <None Remove="ClientApp\src\app\maquina\maquina.service.ts" />
     <None Remove="ClientApp\src\app\maquina\Maquina.ts" />
+    <None Remove="ClientApp\src\app\maquina\nome-not-exists.validatorservice..ts" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\app.routing.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\maquina\edit-maquina.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\maquina\lista-maquina.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\maquina\maquina.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\maquina\maquina.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\maquina\maquina.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\maquina\nome-not-exists.validatorservice..ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\app\shared\components\alert\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

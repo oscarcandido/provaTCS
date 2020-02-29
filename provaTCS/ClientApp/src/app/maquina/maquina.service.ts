@@ -12,7 +12,6 @@ export class MaquinaService {
     ) { }
 
     getAll() {
-        console.log("aqui também")
         return this.http.get<Maquina[]>(API_URL + "Maquina");
     };
 
@@ -26,5 +25,9 @@ export class MaquinaService {
 
     Update(Maquina: Maquina) {
         return this.http.put(API_URL + "Maquina", Maquina);
+    }
+
+    checkIfExists(Nome:string) {
+        return this.http.get(API_URL + "Maquina/" + Nome);
     }
 }

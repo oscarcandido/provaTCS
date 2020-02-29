@@ -1,0 +1,9 @@
+.colNome{
+  min-width: 170px;
+}
+.colAtivo{
+  max-width: 30px !important;
+}
+.colEditar{
+  max-width: 5px !important;
+}

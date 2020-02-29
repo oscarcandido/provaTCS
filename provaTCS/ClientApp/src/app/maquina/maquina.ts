@@ -1,5 +1,5 @@
 export interface Maquina {
-    ID: number;
-    Nome: string;
-    Ativo: number;
+    id: number;
+    nome: string;
+    ativo: boolean;
 }
