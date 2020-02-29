@@ -7,6 +7,6 @@ namespace provaTCS.MODEL
 {
     public class BaseModel
     {
-        public static string Conn = ConfigurationManager.AppSettings["connectionString"];
+        public static string Conn = Program.Configuration["connectionString"];
     }
 }

@@ -36,6 +36,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="web.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ClientApp\src\app\app.routing.module.ts" />
     <None Remove="ClientApp\src\app\maquina\lista-maquina.component.ts" />
     <None Remove="ClientApp\src\app\maquina\maquina.module.ts" />
     <None Remove="ClientApp\src\app\maquina\maquina.service.ts" />
@@ -43,6 +48,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\app.routing.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\maquina\lista-maquina.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\maquina\maquina.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\maquina\maquina.service.ts" />

@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Maquina } from "./Maquina";
 import { HttpClient } from "@angular/common/http";
 
-const API_URL = "http://localhost:44397/api/"
+const API_URL = "https://localhost:44397/api/"
 
 @Injectable({providedIn: "root"})
 export class MaquinaService {
@@ -12,6 +12,7 @@ export class MaquinaService {
     ) { }
 
     getAll() {
+        console.log("aqui também")
         return this.http.get<Maquina[]>(API_URL + "Maquina");
     };
 
