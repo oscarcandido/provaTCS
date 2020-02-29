@@ -13,13 +13,13 @@ namespace provaTCS.Controllers
     {
         // GET: api/Maquina
         [HttpGet]
-        public IEnumerable<dynamic> GetAll()
+        public IEnumerable<dynamic> Get()
         {
             return new MODEL.Maquina().GetAll();
         }
 
         [HttpGet]
-        [Route("api/[controller]/Getall")]
+        [Route("api/[controller]/GetAtivos")]
         public IEnumerable<dynamic> GetAtivos()
         {
             return new MODEL.Maquina().GetAtivos();

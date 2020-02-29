@@ -35,7 +35,7 @@ export class EditMaquinaComponent implements OnInit{
                     Validators.minLength(3),
                     Validators.maxLength(100)
                 ],
-                this.nomeNotExistsValidatorService.checkNomeMaquinaExists()
+                this.nomeNotExistsValidatorService.checkNomeMaquinaExists(this.data)
             ],
             ativo: [true,
                 [

@@ -14,20 +14,29 @@ namespace provaTCS.MODEL
         public string Nome { get; set; }
         public bool Ativo { get; set; }
 
+        /// <summary>
+        /// RETORNA TODOS AS MÁQUINAS CADASTRADAS
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<dynamic> GetAll()
         {
             using IDbConnection DB = new MySqlConnection(Conn);
-            var dados = DB.Query<Maquina>(@"SELECT * FROM MAQUINA");
+            var dados = DB.Query<Maquina>(@"SELECT * FROM MAQUINA ORDER BY NOME");
             return dados;
         }
-
+        /// <summary>
+        /// RETORNA MÁQUINAS ATIVAS
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<dynamic> GetAtivos()
         {
             using IDbConnection DB = new MySqlConnection(Conn);
-            var dados = DB.Query<Maquina>(@"SELECT * FROM MAQUINA WHERE ATIVO = b'1'");
+            var dados = DB.Query<Maquina>(@"SELECT * FROM MAQUINA WHERE ATIVO = b'1'  ORDER BY NOME");
             return dados;
         }
-
+        /// <summary>
+        /// INSERE UMA NOVA MÁQUINA
+        /// </summary>
         public void Insert()
         {
             using IDbConnection DB = new MySqlConnection(Conn);
@@ -36,7 +45,9 @@ namespace provaTCS.MODEL
                         VALUES
                         (@Nome,@Ativo)", this);
         }
-
+        /// <summary>
+        /// ATUALIZA UMA MÁQUINA EXISTENTE
+        /// </summary>
         public void Update()
         {
             using IDbConnection DB = new MySqlConnection(Conn);
@@ -46,7 +57,11 @@ namespace provaTCS.MODEL
                         Ativo = @Ativo
                         WHERE ID = @ID", this);
         }
-
+        /// <summary>
+        /// VERIFICA SE JÁ EXISTE MÁQUINA CADASTRADA COM O NOME INFORMADO
+        /// </summary>
+        /// <param name="Nome"></param>
+        /// <returns></returns>
         public bool CheckNomeMaquinaExists(string Nome)
         {
             using IDbConnection DB = new MySqlConnection(Conn);
