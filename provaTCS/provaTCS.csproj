@@ -13,7 +13,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Angular.Material" Version="1.1.12" />
+    <PackageReference Include="Dapper" Version="2.0.30" />
+    <PackageReference Include="jQuery" Version="3.4.1" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
+    <PackageReference Include="MySql.Data" Version="8.0.19" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,6 +33,20 @@
     <Content Remove="$(SpaRoot)**" />
     <None Remove="$(SpaRoot)**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ClientApp\src\app\maquina\lista-maquina.component.ts" />
+    <None Remove="ClientApp\src\app\maquina\maquina.module.ts" />
+    <None Remove="ClientApp\src\app\maquina\maquina.service.ts" />
+    <None Remove="ClientApp\src\app\maquina\Maquina.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\maquina\lista-maquina.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\maquina\maquina.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\maquina\maquina.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\maquina\maquina.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
