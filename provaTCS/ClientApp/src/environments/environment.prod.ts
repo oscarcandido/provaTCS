@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiUrl: "http://oscarcandido.kinghost.net/api/"
+    apiUrl: "http://www.oscarcandido.kinghost.net/api/"
 };
