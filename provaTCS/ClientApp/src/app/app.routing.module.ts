@@ -5,12 +5,13 @@ import { FetchDataComponent } from "./fetch-data/fetch-data.component";
 import { CounterComponent } from "./counter/counter.component";
 import { ListaMaquinaComponent } from "./maquina/lista-maquina.component";
 import { ListaStatusComponent } from "./status/lista-status.component";
+import { DashboardMaquinasComponent } from "./DashboardMaquinas/dashboard-maquinas.component";
 
 const routes = [
     {
         path: '',
         patthMatch: 'full',
-        component:HomeComponent
+        component: DashboardMaquinasComponent
     },
     {
         path: 'counter',

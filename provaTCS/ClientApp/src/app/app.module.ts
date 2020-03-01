@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app.routing.module';
 import { MaquinaModule } from './maquina/maquina.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StatusModule } from './status/status.module';
+import { DashboardMaquinasModule } from './DashboardMaquinas/dashboard-maquinas.module';
 
 @NgModule({
   declarations: [
@@ -28,9 +29,10 @@ import { StatusModule } from './status/status.module';
       HttpClientModule,
       FormsModule,
       AppRoutingModule,
-      MaquinaModule,
       ReactiveFormsModule,
-      StatusModule
+      MaquinaModule,
+      StatusModule,
+      DashboardMaquinasModule
 
   ],
   providers: [],

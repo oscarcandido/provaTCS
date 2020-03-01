@@ -1,0 +1,16 @@
+<mat-card>
+  <mat-card-title><i class="fa fa-cogs text-info" aria-hidden="true"></i> Painel de Máquinas </mat-card-title>
+  <mat-card-subtitle>Monitoramento de Máquinas</mat-card-subtitle>
+  <mat-card-content>
+    <mat-grid-list cols="2" rowHeight="2:1">
+      <mat-grid-tile *ngFor="let dado of dados">
+        <tcs-displayMaquina [dados]="dado" class="child-grid"></tcs-displayMaquina>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-content>
+  <mat-card-actions>
+  </mat-card-actions>
+</mat-card>
+<div class="fixed-bottom">
+  <ocs-alert></ocs-alert>
+</div>

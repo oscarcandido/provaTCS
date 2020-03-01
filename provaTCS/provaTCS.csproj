@@ -41,6 +41,11 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\app.routing.module.ts" />
+    <None Remove="ClientApp\src\app\DashboardMaquinas\dashboard-maquinas.component.ts" />
+    <None Remove="ClientApp\src\app\DashboardMaquinas\dashboard-maquinas.module.ts" />
+    <None Remove="ClientApp\src\app\DashboardMaquinas\DisplayMaquina\display-maquina.component.ts" />
+    <None Remove="ClientApp\src\app\DashboardMaquinas\eventoMaquina.service.ts" />
+    <None Remove="ClientApp\src\app\DashboardMaquinas\EventoMaquina.ts" />
     <None Remove="ClientApp\src\app\maquina\edit-maquina.component.ts" />
     <None Remove="ClientApp\src\app\maquina\lista-maquina.component.ts" />
     <None Remove="ClientApp\src\app\maquina\maquina.module.ts" />
@@ -57,6 +62,11 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\app.routing.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\DashboardMaquinas\dashboard-maquinas.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\DashboardMaquinas\dashboard-maquinas.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\DashboardMaquinas\DisplayMaquina\display-maquina.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\DashboardMaquinas\eventoMaquina.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\DashboardMaquinas\EventoMaquina.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\maquina\edit-maquina.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\maquina\lista-maquina.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\maquina\maquina.module.ts" />
