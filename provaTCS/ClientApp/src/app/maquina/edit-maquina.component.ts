@@ -7,7 +7,7 @@ import { ListaMaquinaComponent } from "./lista-maquina.component";
 import { MaquinaService } from "./maquina.service";
 import { Maquina } from "./Maquina";
 import { AlertService } from "../shared/components/alert/alert.service";
-import { NomeNotExistsValidatorService } from "./nome-not-exists.validatorservice.";
+import { NomeNotExistsValidatorService } from "./nome-not-exists.validator.service.";
 
 @Component({
     templateUrl: "./edit-maquina.component.html",
@@ -51,8 +51,9 @@ export class EditMaquinaComponent implements OnInit{
             })
         }
     }
+
+    //Salva anterações no cadastro de máquina
     salvaMaquina() {
-        console.log(this.maquinaForm.get('nome').errors);
         if (this.maquinaForm.valid && !this.maquinaForm.pending) {
             const dadosMaquina = this.maquinaForm.getRawValue() as Maquina;
             if (this.data && this.data.id) {

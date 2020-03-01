@@ -4,6 +4,7 @@ import { HomeComponent } from "./home/home.component";
 import { FetchDataComponent } from "./fetch-data/fetch-data.component";
 import { CounterComponent } from "./counter/counter.component";
 import { ListaMaquinaComponent } from "./maquina/lista-maquina.component";
+import { ListaStatusComponent } from "./status/lista-status.component";
 
 const routes = [
     {
@@ -22,6 +23,10 @@ const routes = [
     {
         path: 'ListaMaquinas',
         component: ListaMaquinaComponent
+    },
+    {
+        path: 'ListaStatus',
+        component: ListaStatusComponent
     },
 ]
 

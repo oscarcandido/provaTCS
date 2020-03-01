@@ -39,7 +39,7 @@ namespace provaTCS.Controllers
             return new MODEL.Status().CheckCodigoExists(Codigo);
         }
 
-        [Route("[action]/{Codigo}")]
+        [Route("[action]/{Nome}")]
         [HttpGet]
         public bool CheckNomeStatusExists(string Nome)
         {
@@ -53,11 +53,11 @@ namespace provaTCS.Controllers
             dados.Insert();
         }
 
-        // PUT: api/Status/5
-        [HttpPut("{id}")]
+        // PUT: api/Status/
+        [HttpPut]
         public void Put(MODEL.Status dados)
         {
-            dados.Update()
+            dados.Update();
         }
         
     }

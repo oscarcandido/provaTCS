@@ -1,5 +1,5 @@
 <form #form="ngForm" [formGroup]="maquinaForm" (submit)="salvaMaquina()">
-  <div class="kt-portlet" mat-dialog-title>
+  <div mat-dialog-title>
     <mat-card>
       <mat-card-title><i class="fa fa-cog text-info" aria-hidden="true"></i> Cadastro/Edição de máquina </mat-card-title>
     </mat-card>
@@ -22,7 +22,7 @@
         </div>
       </div>
   </div>
-  <div mat-dialog-actions align="end">
+  <div mat-dialog-actions align="right">
     <button mat-raised-button type="submit" color="primary">Salvar</button>
     <button mat-raised-button [mat-dialog-close] cdkFocusInitial>Cancelar</button>
   </div>

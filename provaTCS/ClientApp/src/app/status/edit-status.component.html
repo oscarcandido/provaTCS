@@ -1,0 +1,37 @@
+<form #form="ngForm" [formGroup]="statusForm" (submit)="salvaStatus()">
+  <div mat-dialog-title>
+    <mat-card>
+      <mat-card-title><i class="fa fa-flag text-info" aria-hidden="true"></i> Cadastro/Edição de Status </mat-card-title>
+    </mat-card>
+  </div>
+  <div mat-dialog-content>
+    <div class="row">
+      <mat-form-field appearance="fill" class="col-4">
+        <mat-label>Código</mat-label>
+        <input matInput formControlName="codigo">
+        <mat-error *ngIf="this.statusForm.get('codigo').errors?.required && form.submitted">Informe o código do status</mat-error>
+        <mat-error *ngIf="this.statusForm.get('codigo').errors?.minlength">O cód. deve ter no min 3 caracteres</mat-error>
+        <mat-error *ngIf="this.statusForm.get('codigo').errors?.maxlength">O cód. deve ter no máx 45 caracteres</mat-error>
+        <mat-error *ngIf="this.statusForm.get('codigo').errors?.codigoExists">Código já existente</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="col-8">
+        <mat-label>Nome do Status</mat-label>
+        <input matInput formControlName="nome">
+        <mat-error *ngIf="this.statusForm.get('nome').errors?.required && form.submitted">Informe o nome da máquina</mat-error>
+        <mat-error *ngIf="this.statusForm.get('nome').errors?.minlength">O nome deve ter pelo menos 3 caracteres</mat-error>
+        <mat-error *ngIf="this.statusForm.get('nome').errors?.maxlength">O nome deve ter no máximo 100 caracteres</mat-error>
+        <mat-error *ngIf="this.statusForm.get('nome').errors?.nomeExists">Já existe status com este nome cadastrado</mat-error>
+      </mat-form-field>
+
+    </div>
+    <div class="row">
+      <div class="col-2">
+        <mat-checkbox formControlName="ativo">Ativo</mat-checkbox>
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions align="right">
+    <button mat-raised-button type="submit" color="primary">Salvar</button>
+    <button mat-raised-button [mat-dialog-close] cdkFocusInitial>Cancelar</button>
+  </div>
+</form>

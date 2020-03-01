@@ -12,23 +12,26 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { AppRoutingModule } from './app.routing.module';
 import { MaquinaModule } from './maquina/maquina.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StatusModule } from './status/status.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NavMenuComponent,
-    HomeComponent,
-    CounterComponent,
-    FetchDataComponent
+      AppComponent,
+      NavMenuComponent,
+      HomeComponent,
+      CounterComponent,
+      FetchDataComponent
   ],
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    FormsModule,
-    AppRoutingModule,
-    MaquinaModule,
-    ReactiveFormsModule,
+      BrowserModule,
+      BrowserAnimationsModule,
+      HttpClientModule,
+      FormsModule,
+      AppRoutingModule,
+      MaquinaModule,
+      ReactiveFormsModule,
+      StatusModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

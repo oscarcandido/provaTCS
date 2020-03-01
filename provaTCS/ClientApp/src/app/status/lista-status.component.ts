@@ -3,41 +3,39 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
-
-import { MaquinaService } from "./maquina.service";
-import { Maquina } from "./Maquina";
-import { EditMaquinaComponent } from "./edit-maquina.component";
+import { StatusService } from "./status.service";
+import { Status } from "./status";
+import { EditStatusComponent } from "./edit-status.component";
 
 @Component({
-    templateUrl: "./lista-maquina.component.html",
-    styleUrls:["lista-maquina.component.css"]
+    templateUrl: "./lista-status.component.html",
+    styleUrls:[ "lista-status.component.css"]
 })
-export class ListaMaquinaComponent implements OnInit {
+export class ListaStatusComponent implements OnInit{
 
-    displayedColumns: string[] = ['nome', 'ativo', 'id'];
+    displayedColumns: string[] = ['codigo', 'nome','ativo', 'id'];
     dataSource: any;
 
     @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
     @ViewChild(MatSort, { static: true }) sort: MatSort;
 
     constructor(
-        private maquinaService: MaquinaService,
+        private statusService: StatusService,
         public dialog: MatDialog
     ) { }
 
-    recuperaMaquinas() {
-        this.maquinaService.getAll()
+    recuperaStatus() {
+        this.statusService.getAll()
             .subscribe(data => {
-                this.dataSource =  new MatTableDataSource<Maquina>(data);
+                this.dataSource = new MatTableDataSource<Status>(data);
                 this.dataSource.paginator = this.paginator;
                 this.dataSource.sort = this.sort;
-            },error=> console.log(error))
+            }, error => console.log(error))
     }
 
     ngOnInit(): void {
-        this.recuperaMaquinas();
+        this.recuperaStatus()
     }
-
 
     //Filtro
     applyFilter(event: Event) {
@@ -45,28 +43,29 @@ export class ListaMaquinaComponent implements OnInit {
         this.dataSource.filter = filterValue.trim().toLowerCase();
     }
 
-    //Abre dialog para edição da máquina
-    visualizaMaquina(maquina: Maquina) {
-        const dialogRef = this.dialog.open(EditMaquinaComponent, {
+    //Abre dialog para edição do Status
+    visualizaStatus(status: Status) {
+        const dialogRef = this.dialog.open(EditStatusComponent, {
             width: '33%',
-            data: maquina,
+            data: status,
             disableClose: true
         });
 
         dialogRef.afterClosed().subscribe(result => {
-            this.recuperaMaquinas();
-        });  
+            this.recuperaStatus();
+        });
     }
     //Abre dialog para inclusão de máquina
-    novaMaquina() {
-        const dialogRef = this.dialog.open(EditMaquinaComponent, {
+    novoStatus() {
+        const dialogRef = this.dialog.open(EditStatusComponent, {
             width: '33%',
             data: null,
             disableClose: true
         });
 
         dialogRef.afterClosed().subscribe(result => {
-            this.recuperaMaquinas();
-        });  
+            this.recuperaStatus();
+        });
     }
+
 }
