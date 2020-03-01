@@ -33,15 +33,15 @@ namespace provaTCS.MODEL
         {
             using IDbConnection DB = new MySqlConnection(Conn);
             var dados = DB.Query<Evento_Maquina>(@"SELECT 
-                                                EVENTO_MAQUINA.*,
-                                                MAQUINA.NOME AS NomeMaquina,
-                                                STATUS.CODIGO AS CodigoStatus,
-                                                STATUS.NOME AS NomeStatus
-                                                FROM EVENTO_MAQUINA
-                                                INNER JOIN MAQUINA ON MAQUINA.ID = EVENTO_MAQUINA.IDMAQUINA
-                                                INNER JOIN STATUS ON STATUS.ID = EVENTO_MAQUINA.IDSTATUS
-                                                WHERE EVENTO_MAQUINA.IDMAQUINA = @IDMaquina
-                                                ORDER BY EVENTO_MAQUINA.DATA DESC", new { IDMaquina });
+                                                evento_maquina.*,
+                                                maquina.NOME AS NomeMaquina,
+                                                status.CODIGO AS CodigoStatus,
+                                                status.NOME AS NomeStatus
+                                                FROM evento_maquina
+                                                INNER JOIN maquina ON maquina.ID = evento_maquina.IDmaquina
+                                                INNER JOIN status ON status.ID = evento_maquina.IDstatus
+                                                WHERE evento_maquina.IDmaquina = @IDMaquina
+                                                ORDER BY evento_maquina.DATA DESC", new { IDMaquina });
             return dados;
 
         }
@@ -53,30 +53,30 @@ namespace provaTCS.MODEL
         {
             using IDbConnection DB = new MySqlConnection(Conn);
             var dados = DB.Query<Evento_Maquina>(@"SELECT 
-                                                    EVENTO_MAQUINA.*,
-                                                    MAQUINA.NOME AS NomeMaquina,
-                                                    STATUS.CODIGO AS CodigoStatus,
-                                                    STATUS.NOME AS NomeStatus,
-                                                    STATUS.COR
-                                                    FROM EVENTO_MAQUINA
-                                                    INNER JOIN MAQUINA ON MAQUINA.ID = EVENTO_MAQUINA.IDMAQUINA
-                                                    INNER JOIN STATUS ON STATUS.ID = EVENTO_MAQUINA.IDSTATUS
-                                                    WHERE EVENTO_MAQUINA.ID IN
+                                                    evento_maquina.*,
+                                                    maquina.NOME AS NomeMaquina,
+                                                    status.CODIGO AS CodigoStatus,
+                                                    status.NOME AS NomeStatus,
+                                                    status.COR
+                                                    FROM evento_maquina
+                                                    INNER JOIN maquina ON maquina.ID = evento_maquina.IDmaquina
+                                                    INNER JOIN status ON status.ID = evento_maquina.IDstatus
+                                                    WHERE evento_maquina.ID IN
                                                     (
-	                                                    SELECT MAX(EVENTO_MAQUINA.ID) 
-                                                        FROM EVENTO_MAQUINA 
-                                                        INNER JOIN MAQUINA ON MAQUINA.ID = EVENTO_MAQUINA.IDMAQUINA AND MAQUINA.ATIVO = b'1' 
-                                                        GROUP BY IDMAQUINA
+	                                                    SELECT MAX(evento_maquina.ID) 
+                                                        FROM evento_maquina 
+                                                        INNER JOIN maquina ON maquina.ID = evento_maquina.IDmaquina AND maquina.ATIVO = b'1' 
+                                                        GROUP BY IDmaquina
                                                     )
-                                                    ORDER BY MAQUINA.NOME");
+                                                    ORDER BY maquina.NOME");
             return dados;
         }
 
         public void Insert()
         {
             using IDbConnection DB = new MySqlConnection(Conn);
-            DB.Execute(@"INSERT INTO EVENTO_MAQUINA
-                        (DATA,IDMAQUINA,IDSTATUS)
+            DB.Execute(@"INSERT INTO evento_maquina
+                        (DATA,IDmaquina,IDstatus)
                         VALUES
                         (@Data,@IDMaquina,@IDStatus)", this);
         }
@@ -93,7 +93,7 @@ namespace provaTCS.MODEL
         }
 
         /// <summary>
-        /// GERA UM EVENTO ALEATÓRIO PARA UMA MÁQUINA ALEATÓRIA E RETORNA A LISTAGEM DOS ULTIMOS STATUS POR MÁQUINA
+        /// GERA UM EVENTO ALEATÓRIO PARA UMA MÁQUINA ALEATÓRIA E RETORNA A LISTAGEM DOS ULTIMOS status POR MÁQUINA
         /// </summary>
         /// <returns></returns>
         public IEnumerable<dynamic> GeraEventoAleatorio()

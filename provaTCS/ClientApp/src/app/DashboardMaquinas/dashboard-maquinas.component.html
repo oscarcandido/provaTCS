@@ -1,5 +1,19 @@
 <mat-card>
-  <mat-card-title><i class="fa fa-cogs text-info" aria-hidden="true"></i> Painel de Máquinas </mat-card-title>
+  <div class="row">
+    <div class="col-9">
+      <mat-card-title><i class="fa fa-cogs text-info" aria-hidden="true"></i> Painel de Máquinas </mat-card-title>
+    </div>
+    <div class="col-3">
+      <label for="basic-url">Gerar eventos a cada</label>
+      <div class="input-group mb-2">
+        <input #intervaloInput type="number" min="1" class="form-control" aria-label="Amount (to the nearest dollar)">
+        <div class="input-group-append">
+          <span class="input-group-text">s</span>
+          <button (click)="changeInterval()" class="btn btn-primary" color="primary">Aplicar</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <mat-card-subtitle>Monitoramento de Máquinas</mat-card-subtitle>
   <mat-card-content>
     <mat-grid-list cols="2" rowHeight="2:1">
@@ -8,8 +22,6 @@
       </mat-grid-tile>
     </mat-grid-list>
   </mat-card-content>
-  <mat-card-actions>
-  </mat-card-actions>
 </mat-card>
 <div class="fixed-bottom">
   <ocs-alert></ocs-alert>

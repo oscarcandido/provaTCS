@@ -1,24 +1,30 @@
-import { Component, OnInit, Input, OnDestroy } from "@angular/core";
+import { Component, OnInit, Input, OnDestroy, ViewChild, ElementRef } from "@angular/core";
 import { EventoMaquinaService } from "./eventoMaquina.service";
 import { EventoMaquina } from "./EventoMaquina";
 
 
+const tempoPadrao: number = 5000;
+
 @Component({
     templateUrl: "./dashboard-maquinas.component.html"
 })
-export class DashboardMaquinasComponent implements OnInit,OnDestroy{
+export class DashboardMaquinasComponent implements OnInit, OnDestroy{
 
     dados: EventoMaquina[] = [];
+    @ViewChild('intervaloInput') intervaloInput: ElementRef<HTMLInputElement>;
+    tempoAtualizacao :number
+    atualizaPainel: any
     constructor(
-        private eventoMaquinaService: EventoMaquinaService
+        private eventoMaquinaService: EventoMaquinaService,
     ) { }
 
-    @Input() tempoAtualizacao = 5000;
-
+    
+ 
     ngOnInit(): void {
+        this.tempoAtualizacao = tempoPadrao;
         this.geraEventoAleatorio()
+        this.atualizaPainel = setInterval(() => this.geraEventoAleatorio(), this.tempoAtualizacao)
     }
-
 
     geraEventoAleatorio() {
         
@@ -32,12 +38,25 @@ export class DashboardMaquinasComponent implements OnInit,OnDestroy{
                     $('.CodStatus').animate({ opacity: '1' }, "slow");
                 })
                 console.log(this.dados);
+                if (!this.intervaloInput.nativeElement.value) {
+                   this.intervaloInput.nativeElement.valueAsNumber = this.tempoAtualizacao/1000;
+                }
             })
     }
     
-    atualizaPainel = setInterval(() => this.geraEventoAleatorio(), this.tempoAtualizacao)
+
 
     ngOnDestroy(): void {
         clearInterval(this.atualizaPainel);
+    }
+
+    changeInterval() {
+
+        var ValorSegundos = this.intervaloInput.nativeElement.valueAsNumber;
+        var ValorMilisegundos = ValorSegundos * 1000;
+        this.tempoAtualizacao = ValorMilisegundos;
+        clearInterval(this.atualizaPainel);
+        this.atualizaPainel = setInterval(() => this.geraEventoAleatorio(), this.tempoAtualizacao)
+
     }
 }

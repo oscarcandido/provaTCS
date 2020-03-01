@@ -11,8 +11,7 @@ export class DisplayMaquinaComponent {
     @Input() dados: EventoMaquina;
 
     constructor() {
-        console.log(this.dados);
-        var cor = 'primary'
+       
     }
 
 }

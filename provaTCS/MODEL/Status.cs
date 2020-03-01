@@ -17,32 +17,32 @@ namespace provaTCS.MODEL
         public bool Ativo { get; set; }
 
         /// <summary>
-        /// RETORNA TODAS OS STATUS CADASTRADOS
+        /// RETORNA TODAS OS status CADASTRADOS
         /// </summary>
         /// <returns></returns>
         public IEnumerable<dynamic> GetAll()
         {
             using IDbConnection DB = new MySqlConnection(Conn);
-            var dados = DB.Query<Status>(@"SELECT * FROM STATUS ORDER BY NOME");
+            var dados = DB.Query<Status>(@"SELECT * FROM status ORDER BY NOME");
             return dados;
         }
         /// <summary>
-        /// RETORNA OS STATUS ATIVOS
+        /// RETORNA OS status ATIVOS
         /// </summary>
         /// <returns></returns>
         public IEnumerable<dynamic> GetAtivos()
         {
             using IDbConnection DB = new MySqlConnection(Conn);
-            var dados = DB.Query<Status>(@"SELECT * FROM STATUS WHERE ATIVO = b'1' ORDER BY NOME");
+            var dados = DB.Query<Status>(@"SELECT * FROM status WHERE ATIVO = b'1' ORDER BY NOME");
             return dados;
         }
         /// <summary>
-        /// INSERE UM NOVO STATUS
+        /// INSERE UM NOVO status
         /// </summary>
         public void Insert()
         {
             using IDbConnection DB = new MySqlConnection(Conn);
-            DB.Execute(@"INSERT INTO STATUS
+            DB.Execute(@"INSERT INTO status
                         (CODIGO,NOME,COR,ATIVO)
                         VALUES
                         (@Codigo,@Nome,@Cor,@Ativo)", this);
@@ -50,12 +50,12 @@ namespace provaTCS.MODEL
         }
 
         /// <summary>
-        /// ATUALIZA UM STATUS EXISTENTE
+        /// ATUALIZA UM status EXISTENTE
         /// </summary>
         public void Update()
         {
             using IDbConnection DB = new MySqlConnection(Conn);
-            DB.Execute(@"UPDATE STATUS
+            DB.Execute(@"UPDATE status
                         SET
                         CODIGO = @Codigo,
                         NOME = @Nome,
@@ -64,25 +64,25 @@ namespace provaTCS.MODEL
                         WHERE ID = @ID", this);
         }
         /// <summary>
-        /// VERIFICA SE JÁ EXISTE STATUS CADASTRADO COM O CODIGO INFORMADO
+        /// VERIFICA SE JÁ EXISTE status CADASTRADO COM O CODIGO INFORMADO
         /// </summary>
         /// <param name="Codigo"></param>
         /// <returns></returns>
         public bool CheckCodigoExists(string Codigo)
         {
             using IDbConnection DB = new MySqlConnection(Conn);
-            return DB.Query<bool>(@"SELECT EXISTS(SELECT ID FROM STATUS WHERE CODIGO = @Codigo)", new { Codigo }).SingleOrDefault();
+            return DB.Query<bool>(@"SELECT EXISTS(SELECT ID FROM status WHERE CODIGO = @Codigo)", new { Codigo }).SingleOrDefault();
         }
 
         /// <summary>
-        /// VERIFICA SE JÁ EXISTE STATUS CADASTRADO COM O NOME INFORMADO
+        /// VERIFICA SE JÁ EXISTE status CADASTRADO COM O NOME INFORMADO
         /// </summary>
         /// <param name="Nome"></param>
         /// <returns></returns>
         public bool CheckNomeStatusExists(string Nome)
         {
             using IDbConnection DB = new MySqlConnection(Conn);
-            return DB.Query<bool>(@"SELECT EXISTS(SELECT ID FROM STATUS WHERE NOME = @Nome)", new { Nome }).SingleOrDefault();
+            return DB.Query<bool>(@"SELECT EXISTS(SELECT ID FROM status WHERE NOME = @Nome)", new { Nome }).SingleOrDefault();
         }
     }
 }

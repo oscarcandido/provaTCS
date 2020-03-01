@@ -21,7 +21,7 @@ namespace provaTCS.MODEL
         public IEnumerable<dynamic> GetAll()
         {
             using IDbConnection DB = new MySqlConnection(Conn);
-            var dados = DB.Query<Maquina>(@"SELECT * FROM MAQUINA ORDER BY NOME");
+            var dados = DB.Query<Maquina>(@"SELECT * FROM maquina ORDER BY NOME");
             return dados;
         }
         /// <summary>
@@ -31,7 +31,7 @@ namespace provaTCS.MODEL
         public IEnumerable<dynamic> GetAtivos()
         {
             using IDbConnection DB = new MySqlConnection(Conn);
-            var dados = DB.Query<Maquina>(@"SELECT * FROM MAQUINA WHERE ATIVO = b'1'  ORDER BY NOME");
+            var dados = DB.Query<Maquina>(@"SELECT * FROM maquina WHERE ATIVO = b'1'  ORDER BY NOME");
             return dados;
         }
         /// <summary>
@@ -40,7 +40,7 @@ namespace provaTCS.MODEL
         public void Insert()
         {
             using IDbConnection DB = new MySqlConnection(Conn);
-            DB.Execute(@"INSERT INTO MAQUINA
+            DB.Execute(@"INSERT INTO maquina
                         (Nome,Ativo)
                         VALUES
                         (@Nome,@Ativo)", this);
@@ -51,7 +51,7 @@ namespace provaTCS.MODEL
         public void Update()
         {
             using IDbConnection DB = new MySqlConnection(Conn);
-            DB.Execute(@"UPDATE MAQUINA
+            DB.Execute(@"UPDATE maquina
                         SET
                         Nome = @Nome,
                         Ativo = @Ativo
@@ -65,7 +65,7 @@ namespace provaTCS.MODEL
         public bool CheckNomeMaquinaExists(string Nome)
         {
             using IDbConnection DB = new MySqlConnection(Conn);
-            return DB.Query<bool>("SELECT EXISTS(SELECT ID FROM MAQUINA WHERE NOME = @Nome)", new { Nome }).SingleOrDefault();
+            return DB.Query<bool>("SELECT EXISTS(SELECT ID FROM maquina WHERE NOME = @Nome)", new { Nome }).SingleOrDefault();
         }
     }
 }

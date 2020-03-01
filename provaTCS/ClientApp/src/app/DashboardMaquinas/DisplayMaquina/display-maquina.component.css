@@ -22,4 +22,19 @@
   border-color:gray;
   border-style:solid;
 }
-
+.nomeCampo{
+  font-size: 10px;
+  font-weight: bold;
+  height: 30%;
+  padding-left: 2px;
+}
+.valorCampo{
+  height: 70%;
+  line-height: 70%;
+  text-align:center;
+  padding-top : 20px
+}
+.dadoContainer{
+  height: 100%;
+  width : 100%;
+}

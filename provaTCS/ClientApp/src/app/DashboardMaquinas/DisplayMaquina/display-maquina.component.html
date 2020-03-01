@@ -1,6 +1,32 @@
 <mat-grid-list cols="4" rowHeight="80px">
   <mat-grid-tile [colspan]="1" [rowspan]="2" class="icone"><i class="fa fa-cog fa-4x fa-spin"></i></mat-grid-tile>
   <mat-grid-tile [colspan]="3" [rowspan]="1" class="NomeMaquina">{{dados.nomeMaquina}}</mat-grid-tile>
-  <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="dados.cor" class="CodStatus">{{dados.codigoStatus}}</mat-grid-tile>
-  <mat-grid-tile [colspan]="2" [rowspan]="1" [style.background]="dados.cor" class="NomeStatus">{{dados.nomeStatus}}</mat-grid-tile>
+  <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="dados.cor" class="CodStatus">
+    <div class="dadoContainer">
+      <div class="row nomeCampo">
+        <div class="col-12 ">
+          Código do Status
+        </div>
+      </div>
+      <div class="row valorCampo">
+        <div class="col-12">
+          {{dados.codigoStatus}}
+        </div>
+      </div>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="2" [rowspan]="1" [style.background]="dados.cor" class="NomeStatus">
+    <div class="dadoContainer">
+      <div class="row nomeCampo">
+        <div class="col-12 ">
+          Nome do Status
+        </div>
+      </div>
+      <div class="row valorCampo">
+        <div class="col-12" >
+          {{dados.nomeStatus}}
+        </div>
+      </div>
+    </div>
+  </mat-grid-tile>
 </mat-grid-list>
