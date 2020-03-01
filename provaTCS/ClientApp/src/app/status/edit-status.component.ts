@@ -44,6 +44,7 @@ export class EditStatusComponent implements OnInit{
                 ],
                 this.codigoNomeNotExistsValidatorService.checkNomeExists(this.data)
             ],
+            cor: [''],
             ativo: [true,
                 [
                     Validators.required
@@ -55,6 +56,7 @@ export class EditStatusComponent implements OnInit{
             this.statusForm.patchValue({
                 codigo: this.data.codigo,
                 nome: this.data.nome,
+                cor: this.data.cor,
                 ativo: this.data.ativo
             })
         }

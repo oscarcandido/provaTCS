@@ -2,11 +2,15 @@
   border-width: 1px;
   border-color:gray;
   border-style:solid;
+  color:white;
+  background-color:slategrey
 }
-.NomeMaquina{
+.NomeMaquina {
   border-width: 1px;
-  border-color:gray;
-  border-style:solid;
+  border-color: gray;
+  border-style: solid;
+  color: white;
+  background-color: slategrey
 }
 .CodStatus{
   border-width: 1px;

@@ -6,5 +6,6 @@ export interface EventoMaquina {
     nomeMaquina: string;
     codigoStatus: string;
     nomeStatus: string;
+    cor: string;
 
 }

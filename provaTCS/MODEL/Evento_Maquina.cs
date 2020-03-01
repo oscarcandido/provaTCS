@@ -21,6 +21,8 @@ namespace provaTCS.MODEL
         public string CodigoStatus { get; private set; }
         public string NomeStatus { get; private set; }
 
+        public string Cor { get; private set; }
+
         #endregion
         /// <summary>
         /// REDUPERA TODOS OS EVENTOS DE UMA MÁQUINA INFORMADA
@@ -54,7 +56,8 @@ namespace provaTCS.MODEL
                                                     EVENTO_MAQUINA.*,
                                                     MAQUINA.NOME AS NomeMaquina,
                                                     STATUS.CODIGO AS CodigoStatus,
-                                                    STATUS.NOME AS NomeStatus
+                                                    STATUS.NOME AS NomeStatus,
+                                                    STATUS.COR
                                                     FROM EVENTO_MAQUINA
                                                     INNER JOIN MAQUINA ON MAQUINA.ID = EVENTO_MAQUINA.IDMAQUINA
                                                     INNER JOIN STATUS ON STATUS.ID = EVENTO_MAQUINA.IDSTATUS
@@ -64,7 +67,8 @@ namespace provaTCS.MODEL
                                                         FROM EVENTO_MAQUINA 
                                                         INNER JOIN MAQUINA ON MAQUINA.ID = EVENTO_MAQUINA.IDMAQUINA AND MAQUINA.ATIVO = b'1' 
                                                         GROUP BY IDMAQUINA
-                                                    )");
+                                                    )
+                                                    ORDER BY MAQUINA.NOME");
             return dados;
         }
 
@@ -100,7 +104,7 @@ namespace provaTCS.MODEL
             Maquinas = new Maquina().GetAtivos().ToList();
             Status = new MODEL.Status().GetAtivos().ToList();
             int IndexMaquina = GetRandomNumber(0, Maquinas.Count());
-            int IndexStatus = GetRandomNumber(0, Maquinas.Count());
+            int IndexStatus = GetRandomNumber(0, Status.Count());
             Maquina MaquinaSelecionada = Maquinas[IndexMaquina];
             Status StatusSelecionado = Status[IndexStatus];
             this.IDMaquina = MaquinaSelecionada.ID;

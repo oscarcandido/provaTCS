@@ -13,6 +13,7 @@ namespace provaTCS.MODEL
         public int ID { get; set; }
         public string  Codigo { get; set; }
         public string Nome { get; set; }
+        public string Cor { get; set; }
         public bool Ativo { get; set; }
 
         /// <summary>
@@ -42,9 +43,9 @@ namespace provaTCS.MODEL
         {
             using IDbConnection DB = new MySqlConnection(Conn);
             DB.Execute(@"INSERT INTO STATUS
-                        (CODIGO,NOME,ATIVO)
+                        (CODIGO,NOME,COR,ATIVO)
                         VALUES
-                        (@Codigo,@Nome,@Ativo)", this);
+                        (@Codigo,@Nome,@Cor,@Ativo)", this);
 
         }
 
@@ -58,6 +59,7 @@ namespace provaTCS.MODEL
                         SET
                         CODIGO = @Codigo,
                         NOME = @Nome,
+                        COR = @Cor,
                         ATIVO = @Ativo
                         WHERE ID = @ID", this);
         }
