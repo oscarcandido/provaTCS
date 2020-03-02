@@ -29,12 +29,16 @@
   padding-left: 2px;
 }
 .valorCampo{
-  height: 70%;
-  line-height: 70%;
+  height: 50%;
   text-align:center;
-  padding-top : 20px
+  padding-top : 10px
 }
-.dadoContainer{
+.dataEvento {
+  height: 20%;
+  text-align: left;
+  font-size: 10px;
+}
+.dadoContainer {
   height: 100%;
-  width : 100%;
+  width: 100%;
 }
